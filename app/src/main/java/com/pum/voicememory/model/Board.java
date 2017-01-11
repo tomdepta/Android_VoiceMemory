@@ -37,4 +37,8 @@ public class Board {
     public Field[][] getBoard() {
         return board;
     }
+
+    public void updateField(int x, int y, Field field) {
+        board[x][y] = field;
+    }
 }
