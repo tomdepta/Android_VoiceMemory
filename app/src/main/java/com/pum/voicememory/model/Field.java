@@ -2,14 +2,13 @@ package com.pum.voicememory.model;
 
 
 public class Field {
+
     private char letter;
+    private eFieldState state;
 
     public Field(char letter) {
         this.letter = letter;
-    }
-
-    public char getLetter() {
-        return letter;
+        this.state = eFieldState.Pending;
     }
 
     @Override
@@ -23,4 +22,17 @@ public class Field {
             return true;
         return false;
     }
+
+    public void setState(eFieldState state) {
+        this.state = state;
+    }
+
+    public eFieldState getState() {
+        return this.state;
+    }
+
+    public char getLetter() {
+        return letter;
+    }
+
 }
