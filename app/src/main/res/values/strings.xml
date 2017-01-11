@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Voice Memory</string>
+    <string name="start_game">Start Game</string>
+    <string name="high_scores">High Scores</string>
+    <string name="how_to_play">How To Play</string>
+    <string name="about">About</string>
+    <string name="quit">Quit</string>
 </resources>
