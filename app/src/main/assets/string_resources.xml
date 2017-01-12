@@ -1,0 +1,8 @@
+<StringResources>
+    <Commands>
+        <Command name="move_up">
+            <pl>do góry</pl>
+            <en>move up</en>
+        </Command>
+    </Commands>
+</StringResources>

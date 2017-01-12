@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        spokenWordParser = new SpokenWordParser();
+        spokenWordParser = new SpokenWordParser(getBaseContext());
 
         recognizer = SpeechRecognizer.createSpeechRecognizer(this);
         recognizer.setRecognitionListener(new voiceListener());
