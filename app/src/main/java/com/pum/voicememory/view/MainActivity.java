@@ -14,7 +14,8 @@ package com.pum.voicememory.view;
         import android.widget.Toast;
 
         import com.pum.voicememory.R;
-        import com.pum.voicememory.logic.SpokenWordParser;
+        import com.pum.voicememory.constants.ActivityTags;
+        import com.pum.voicememory.logic.voiceparsing.SpokenWordParser;
 
         import java.util.ArrayList;
 
@@ -27,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
     private SparseArray<Button> menuButtons = new SparseArray<>();
 
     private SpeechRecognizer recognizer;
-    private static final String TAG = "VoiceMemoryMainActivity";
+    private static final String TAG = ActivityTags.MainActivityTag;
     private SpokenWordParser spokenWordParser;
 
     @Override
@@ -115,7 +116,7 @@ public class MainActivity extends AppCompatActivity {
             ArrayList recognizedWords = results.getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION);
             for (Object wordObj : recognizedWords) {
                 String word = wordObj.toString();
-                String parsingResult = spokenWordParser.parse(word);
+                String parsingResult = spokenWordParser.parse(word, TAG);
                 if (parsingResult != null) {
                     Toast.makeText(getApplicationContext(), parsingResult, Toast.LENGTH_SHORT).show();
                 }

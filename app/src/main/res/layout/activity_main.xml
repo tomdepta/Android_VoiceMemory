@@ -14,48 +14,48 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/tap_anywhere_and_give_command"
-        android:textSize="24sp"
+        android:textSize="20sp"
         android:textStyle="normal|bold" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
+        android:layout_alignParentBottom="true"
         android:orientation="vertical">
         <Button
             android:text="@string/start_game"
             android:id="@+id/button_startGame"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="80dp"
             android:layout_marginBottom="10dp"
             android:textSize="24sp" />
         <Button
             android:text="@string/high_scores"
             android:id="@+id/button_highScores"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="80dp"
             android:layout_marginBottom="10dp"
             android:textSize="24sp"/>
         <Button
             android:text="@string/how_to_play"
             android:id="@+id/button_howToPlay"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="80dp"
             android:layout_marginBottom="10dp"
             android:textSize="24sp"/>
         <Button
             android:text="@string/about"
             android:id="@+id/button_about"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="80dp"
             android:layout_marginBottom="10dp"
             android:textSize="24sp"/>
         <Button
             android:text="@string/quit"
             android:id="@+id/button_quit"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="80dp"
             android:layout_marginBottom="10dp"
             android:textSize="24sp"/>
     </LinearLayout>
