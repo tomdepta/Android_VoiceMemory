@@ -191,7 +191,16 @@ public class MainActivity extends AppCompatActivity {
                     updateButtonView();
                 break;
             case Select:
+                selectButton();
                 break;
+        }
+    }
+
+    private void selectButton() {
+        Intent intent;
+        if (selectedOptionIndex == 0) {
+            intent = new Intent(this, GameActivity.class);
+            startActivity(intent);
         }
     }
 
