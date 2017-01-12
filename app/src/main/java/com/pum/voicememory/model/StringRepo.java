@@ -2,6 +2,8 @@ package com.pum.voicememory.model;
 
 import android.content.Context;
 
+import com.pum.voicememory.constants.Localization;
+
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 
@@ -21,7 +23,7 @@ public class StringRepo {
     private String systemLanguage;
 
     public StringRepo(Context context) {
-        systemLanguage = resolveSystemLanguage();
+        systemLanguage = Localization.getLanguage();
         InputStream inputStream;
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         try {
@@ -53,13 +55,5 @@ public class StringRepo {
             e.printStackTrace();
             return null;
         }
-    }
-
-    private String resolveSystemLanguage() {
-        String language = Locale.getDefault().getLanguage();
-        if (!language.equals("pl")) {
-            return "en";
-        }
-        return language;
     }
 }

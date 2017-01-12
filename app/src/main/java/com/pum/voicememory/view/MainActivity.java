@@ -1,28 +1,31 @@
 package com.pum.voicememory.view;
 
-        import android.content.Intent;
-        import android.speech.RecognitionListener;
-        import android.speech.RecognizerIntent;
-        import android.speech.SpeechRecognizer;
-        import android.support.v7.app.AppCompatActivity;
-        import android.os.Bundle;
-        import android.util.Log;
-        import android.util.SparseArray;
-        import android.view.View;
-        import android.widget.Button;
-        import android.widget.RelativeLayout;
-        import android.widget.Toast;
+    import android.content.Intent;
+    import android.speech.RecognitionListener;
+    import android.speech.RecognizerIntent;
+    import android.speech.SpeechRecognizer;
+    import android.speech.tts.TextToSpeech;
+    import android.support.v7.app.AppCompatActivity;
+    import android.os.Bundle;
+    import android.util.Log;
+    import android.util.SparseArray;
+    import android.view.View;
+    import android.widget.Button;
+    import android.widget.RelativeLayout;
+    import android.widget.Toast;
 
-        import com.pum.voicememory.R;
-        import com.pum.voicememory.constants.ActivityTags;
-        import com.pum.voicememory.logic.voiceparsing.SpokenWordParser;
-        import com.pum.voicememory.logic.voiceparsing.eAction;
-        import com.pum.voicememory.model.StringRepo;
+    import com.pum.voicememory.R;
+    import com.pum.voicememory.constants.ActivityTags;
+    import com.pum.voicememory.constants.Localization;
+    import com.pum.voicememory.logic.voiceparsing.SpokenWordParser;
+    import com.pum.voicememory.logic.voiceparsing.eAction;
+    import com.pum.voicememory.model.StringRepo;
 
-        import java.util.ArrayList;
+    import java.util.ArrayList;
+    import java.util.Locale;
 
-        import static android.graphics.Color.LTGRAY;
-        import static android.graphics.Color.MAGENTA;
+    import static android.graphics.Color.LTGRAY;
+    import static android.graphics.Color.MAGENTA;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -33,6 +36,8 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG = ActivityTags.MainActivityTag;
     private SpokenWordParser spokenWordParser;
 
+    private TextToSpeech speech;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,19 +45,16 @@ public class MainActivity extends AppCompatActivity {
 
         initializeDisplayedText();
         initializeMenuItemsMap();
-        updateButtonView();
 
-        RelativeLayout rlayout =(RelativeLayout) findViewById(R.id.activity_main);
-        rlayout.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                startListening();
+        resetVoiceListener();
+
+        speech = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
+            @Override
+            public void onInit(int status) {
             }
         });
-
-        spokenWordParser = new SpokenWordParser(getBaseContext());
-
-        recognizer = SpeechRecognizer.createSpeechRecognizer(this);
-        recognizer.setRecognitionListener(new voiceListener());
+        speech.setLanguage(Localization.getLocale());
+        updateButtonView();
     }
 
     private void initializeDisplayedText() {
@@ -93,6 +95,7 @@ public class MainActivity extends AppCompatActivity {
                 button.setBackgroundColor(LTGRAY);
             }
         }
+        speech.speak(String.valueOf(menuButtons.get(selectedOptionIndex).getText()), TextToSpeech.QUEUE_FLUSH, null);
     }
 
     private void startListening() {
@@ -131,6 +134,9 @@ public class MainActivity extends AppCompatActivity {
         {
             Log.d(TAG,  "error " +  error);
             Toast.makeText(getApplicationContext(), "error " + error, Toast.LENGTH_SHORT).show();
+            if (error == 8) {
+                resetVoiceListener();
+            }
         }
         public void onResults(Bundle results)
         {
@@ -154,6 +160,20 @@ public class MainActivity extends AppCompatActivity {
         {
             Log.d(TAG, "onEvent " + eventType);
         }
+    }
+
+    private void resetVoiceListener() {
+        RelativeLayout rlayout =(RelativeLayout) findViewById(R.id.activity_main);
+        rlayout.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                startListening();
+            }
+        });
+
+        spokenWordParser = new SpokenWordParser(getBaseContext());
+
+        recognizer = SpeechRecognizer.createSpeechRecognizer(this);
+        recognizer.setRecognitionListener(new voiceListener());
     }
 
     private void performAction(eAction parsingResult) {
