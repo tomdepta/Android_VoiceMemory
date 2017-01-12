@@ -16,6 +16,7 @@ package com.pum.voicememory.view;
         import com.pum.voicememory.R;
         import com.pum.voicememory.constants.ActivityTags;
         import com.pum.voicememory.logic.voiceparsing.SpokenWordParser;
+        import com.pum.voicememory.logic.voiceparsing.eAction;
 
         import java.util.ArrayList;
 
@@ -116,9 +117,9 @@ public class MainActivity extends AppCompatActivity {
             ArrayList recognizedWords = results.getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION);
             for (Object wordObj : recognizedWords) {
                 String word = wordObj.toString();
-                String parsingResult = spokenWordParser.parse(word, TAG);
+                eAction parsingResult = spokenWordParser.parse(word, TAG);
                 if (parsingResult != null) {
-                    Toast.makeText(getApplicationContext(), parsingResult, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), parsingResult.toString(), Toast.LENGTH_SHORT).show();
                 }
             }
             //Toast.makeText(getApplicationContext(), "results: "+String.valueOf(recognizedWords.size()), Toast.LENGTH_SHORT).show();
