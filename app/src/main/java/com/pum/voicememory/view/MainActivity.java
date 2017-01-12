@@ -141,6 +141,7 @@ public class MainActivity extends AppCompatActivity {
                 eAction parsingResult = spokenWordParser.parse(word, TAG);
                 if (parsingResult != null) {
                     Toast.makeText(getApplicationContext(), parsingResult.toString(), Toast.LENGTH_SHORT).show();
+                    performAction(parsingResult);
                 }
             }
             //Toast.makeText(getApplicationContext(), "results: "+String.valueOf(recognizedWords.size()), Toast.LENGTH_SHORT).show();
@@ -152,6 +153,25 @@ public class MainActivity extends AppCompatActivity {
         public void onEvent(int eventType, Bundle params)
         {
             Log.d(TAG, "onEvent " + eventType);
+        }
+    }
+
+    private void performAction(eAction parsingResult) {
+        switch (parsingResult) {
+            case MoveUp:
+                selectedOptionIndex--;
+                if (selectedOptionIndex < 0)
+                    selectedOptionIndex = 4;
+                    updateButtonView();
+                break;
+            case MoveDown:
+                selectedOptionIndex++;
+                if (selectedOptionIndex > 4)
+                    selectedOptionIndex = 0;
+                    updateButtonView();
+                break;
+            case Select:
+                break;
         }
     }
 
