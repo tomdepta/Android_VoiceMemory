@@ -5,4 +5,26 @@
             <en>move up</en>
         </Command>
     </Commands>
+    <Buttons>
+        <Button name="start_game">
+            <pl>Zacznij Grę</pl>
+            <en>Start Game</en>
+        </Button>
+        <Button name="high_scores">
+            <pl>Najlepsze Wyniki</pl>
+            <en>High Scores</en>
+        </Button>
+        <Button name="how_to_play">
+            <pl>Jak Grać</pl>
+            <en>How To Play</en>
+        </Button>
+        <Button name="about">
+            <pl>O Programie</pl>
+            <en>About</en>
+        </Button>
+        <Button name="quit">
+            <pl>Wyjdź</pl>
+            <en>Quit</en>
+        </Button>
+    </Buttons>
 </StringResources>

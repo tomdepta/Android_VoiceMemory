@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.res.AssetManager;
 
 import com.pum.voicememory.constants.ActivityTags;
+import com.pum.voicememory.model.StringRepo;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -22,20 +23,10 @@ import javax.xml.xpath.XPathFactory;
 
 public class SpokenWordParser {
 
-    private Document actionsXml;
-    private String systemLanguage;
+    private StringRepo stringRepo;
 
-    public SpokenWordParser(Context baseContext) {
-        systemLanguage = resolveSystemLanguage();
-        InputStream inputStream;
-        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-        try {
-            inputStream = baseContext.getAssets().open("string_resources.xml");
-            DocumentBuilder builder = factory.newDocumentBuilder();
-            actionsXml = builder.parse(inputStream);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    public SpokenWordParser(Context context) {
+        stringRepo = new StringRepo(context);
     }
 
     public eAction parse(String textToParse, String activityTag) {
@@ -50,31 +41,10 @@ public class SpokenWordParser {
 
     private eAction parseMainActivityAction(String textToParse) {
 
-        if (textToParse.toLowerCase().equals(getStringResource("move_up"))) {
+        if (textToParse.toLowerCase().equals(stringRepo.getCommand("move_up"))) {
             return eAction.StartGame;
         }
 
         return null;
-    }
-
-    private String getStringResource(String commandName) {
-        try {
-            String xpathStr = "StringResources/Commands/Command[@name='"+commandName+"']/"+systemLanguage;
-            XPath xPath = XPathFactory.newInstance().newXPath();
-            Node node = (Node) xPath.evaluate(xpathStr, actionsXml, XPathConstants.NODE);
-            String result = node.getFirstChild().getNodeValue();
-            return result;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
-
-    private String resolveSystemLanguage() {
-        String language = Locale.getDefault().getLanguage();
-        if (!language.equals("pl")) {
-            return "en";
-        }
-        return language;
     }
 }

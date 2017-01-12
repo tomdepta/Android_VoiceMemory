@@ -17,6 +17,7 @@ package com.pum.voicememory.view;
         import com.pum.voicememory.constants.ActivityTags;
         import com.pum.voicememory.logic.voiceparsing.SpokenWordParser;
         import com.pum.voicememory.logic.voiceparsing.eAction;
+        import com.pum.voicememory.model.StringRepo;
 
         import java.util.ArrayList;
 
@@ -37,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        initializeDisplayedText();
         initializeMenuItemsMap();
         updateButtonView();
 
@@ -51,6 +53,25 @@ public class MainActivity extends AppCompatActivity {
 
         recognizer = SpeechRecognizer.createSpeechRecognizer(this);
         recognizer.setRecognitionListener(new voiceListener());
+    }
+
+    private void initializeDisplayedText() {
+        StringRepo stringRepo = new StringRepo(getBaseContext());
+
+        Button button = (Button) findViewById(R.id.button_startGame);
+        button.setText(stringRepo.getButtonText("start_game"));
+
+        button = (Button) findViewById(R.id.button_highScores);
+        button.setText(stringRepo.getButtonText("high_scores"));
+
+        button = (Button) findViewById(R.id.button_howToPlay);
+        button.setText(stringRepo.getButtonText("how_to_play"));
+
+        button = (Button) findViewById(R.id.button_about);
+        button.setText(stringRepo.getButtonText("about"));
+
+        button = (Button) findViewById(R.id.button_quit);
+        button.setText(stringRepo.getButtonText("quit"));
     }
 
     private void initializeMenuItemsMap() {
