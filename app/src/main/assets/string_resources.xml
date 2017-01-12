@@ -1,8 +1,16 @@
 <StringResources>
     <Commands>
         <Command name="move_up">
-            <pl>do góry</pl>
-            <en>move up</en>
+            <pl>góra</pl>
+            <en>up</en>
+        </Command>
+        <Command name="move_down">
+            <pl>dół</pl>
+            <en>down</en>
+        </Command>
+        <Command name="select">
+            <pl>wybierz</pl>
+            <en>select</en>
         </Command>
     </Commands>
     <Buttons>
