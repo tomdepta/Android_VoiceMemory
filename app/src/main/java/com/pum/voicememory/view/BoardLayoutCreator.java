@@ -3,6 +3,8 @@ package com.pum.voicememory.view;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.view.Gravity;
+import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -18,8 +20,11 @@ public class BoardLayoutCreator {
             row.setOrientation(LinearLayout.HORIZONTAL);
             for (int j = 0; j < BoardSize.Width; j++) {
                 TextView tv = new TextView(context);
-                tv.setWidth(40);
-                tv.setHeight(40);
+                tv.setWidth(95);
+                tv.setHeight(95);
+                tv.setTextColor(Color.BLACK);
+                tv.setTextSize(40);
+                tv.setGravity(Gravity.CENTER);
                 tv.setBackgroundColor(getColorFor(boardContent[i][j].getState()));
                 tv.setText(String.valueOf(boardContent[i][j].getLetter()));
 
