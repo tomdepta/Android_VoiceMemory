@@ -41,6 +41,6 @@ public class Board {
     }
 
     public void updateField(int x, int y, Field field) {
-        board[x][y] = field;
+        board[y][x] = field;
     }
 }

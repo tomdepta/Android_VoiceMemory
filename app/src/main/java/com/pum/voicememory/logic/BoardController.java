@@ -15,7 +15,7 @@ public class BoardController {
 
     public Field getFieldAt(int x, int y) {
         Field[][] fields = board.getBoard();
-        Field selectedField = fields[x][y];
+        Field selectedField = fields[y][x];
         selectedField.setState(eFieldState.Selected);
         board.updateField(x, y, selectedField);
 
@@ -28,7 +28,7 @@ public class BoardController {
 
     public void resetField(int x, int y) {
         Field[][] fields = board.getBoard();
-        Field selectedField = fields[x][y];
+        Field selectedField = fields[y][x];
         selectedField.setState(eFieldState.Pending);
         board.updateField(x, y, selectedField);
     }
