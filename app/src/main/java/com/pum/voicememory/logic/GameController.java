@@ -1,15 +1,10 @@
 package com.pum.voicememory.logic;
 
-import com.pum.voicememory.model.Board;
+import com.pum.voicememory.constants.Coordinates;
 import com.pum.voicememory.model.Field;
 
 
 public class GameController {
-
-    private class Coordinates {
-        public int X;
-        public int Y;
-    }
 
     private BoardController boardController;
     private Coordinates previouslySelected;

@@ -17,7 +17,7 @@ public class Board {
     }
 
     private Field[][] initializeBoard() {
-        Field[][] result =  new Field[3][4];
+        Field[][] result =  new Field[4][3];
 
         Character[] fieldValues = {'A','A','B','B','C','C','D','D','E','E','F','F'};
         List<Character> listOfFieldValues = new LinkedList<>(Arrays.asList(fieldValues));

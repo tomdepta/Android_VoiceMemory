@@ -8,6 +8,14 @@
             <pl>dół</pl>
             <en>down</en>
         </Command>
+        <Command name="move_left">
+            <pl>lewo</pl>
+            <en>left</en>
+        </Command>
+        <Command name="move_right">
+            <pl>prawo</pl>
+            <en>right</en>
+        </Command>
         <Command name="select">
             <pl>wybierz</pl>
             <en>select</en>

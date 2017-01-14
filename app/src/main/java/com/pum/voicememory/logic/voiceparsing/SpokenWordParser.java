@@ -34,6 +34,8 @@ public class SpokenWordParser {
         switch (activityTag) {
             case ActivityTags.MainActivityTag:
                 return parseMainActivityAction(textToParse);
+            case ActivityTags.GameActivity:
+                return parseGameActivityAction(textToParse);
             default:
                 return null;
         }
@@ -46,6 +48,27 @@ public class SpokenWordParser {
         }
         if (textToParse.toLowerCase().equals(stringRepo.getCommand("move_down"))) {
             return eAction.MoveDown;
+        }
+        if (textToParse.toLowerCase().equals(stringRepo.getCommand("select"))) {
+            return eAction.Select;
+        }
+
+        return null;
+    }
+
+    private eAction parseGameActivityAction(String textToParse) {
+
+        if (textToParse.toLowerCase().equals(stringRepo.getCommand("move_up"))) {
+            return eAction.MoveUp;
+        }
+        if (textToParse.toLowerCase().equals(stringRepo.getCommand("move_down"))) {
+            return eAction.MoveDown;
+        }
+        if (textToParse.toLowerCase().equals(stringRepo.getCommand("move_left"))) {
+            return eAction.MoveLeft;
+        }
+        if (textToParse.toLowerCase().equals(stringRepo.getCommand("move_right"))) {
+            return eAction.MoveRight;
         }
         if (textToParse.toLowerCase().equals(stringRepo.getCommand("select"))) {
             return eAction.Select;

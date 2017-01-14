@@ -29,6 +29,8 @@ package com.pum.voicememory.view;
 
 public class MainActivity extends AppCompatActivity {
 
+    //TODO: Refactor - extract voice listener handling to another object
+
     private Integer selectedOptionIndex = 0;
     private SparseArray<Button> menuButtons = new SparseArray<>();
 
