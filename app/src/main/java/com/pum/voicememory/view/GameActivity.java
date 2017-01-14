@@ -167,32 +167,30 @@ public class GameActivity extends AppCompatActivity {
                 selectedItem.Y--;
                 if (selectedItem.Y < 0)
                     selectedItem.Y = BoardSize.Height - 1;
-                updateBoardLayout(gameController.getUpdatedBoardDisplay());
                 break;
             case MoveDown:
                 selectedItem.Y++;
                 if (selectedItem.Y > BoardSize.Height - 1)
                     selectedItem.Y = 0;
-                updateBoardLayout(gameController.getUpdatedBoardDisplay());
                 break;
             case MoveLeft:
                 selectedItem.X--;
                 if (selectedItem.X < 0)
                     selectedItem.X = BoardSize.Width - 1;
-                updateBoardLayout(gameController.getUpdatedBoardDisplay());
                 break;
             case MoveRight:
                 selectedItem.X++;
                 if (selectedItem.X > BoardSize.Width - 1)
                     selectedItem.X = 0;
-                updateBoardLayout(gameController.getUpdatedBoardDisplay());
                 break;
             case Select:
                 selectButton();
                 break;
         }
+        updateBoardLayout(gameController.getUpdatedBoardDisplay());
     }
 
     private void selectButton() {
+        gameController.selectPosition(selectedItem.X, selectedItem.Y);
     }
 }
