@@ -43,4 +43,10 @@
             <en>Quit</en>
         </Button>
     </Buttons>
+    <Notifications>
+        <Notification name="finalized_field">
+            <pl>te pole już jest odkryte</pl>
+            <en>this field is already discovered</en>
+        </Notification>
+    </Notifications>
 </StringResources>

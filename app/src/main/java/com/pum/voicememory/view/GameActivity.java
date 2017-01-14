@@ -48,7 +48,7 @@ public class GameActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 
-        gameController = new GameController();
+        gameController = new GameController(getBaseContext());
 
         speech = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
             @Override
@@ -202,7 +202,7 @@ public class GameActivity extends AppCompatActivity {
     }
 
     private void selectButton() {
-        char letter = gameController.selectPosition(selectedItem.X, selectedItem.Y);
-        speech.speak(String.valueOf(letter), TextToSpeech.QUEUE_FLUSH, null);
+        String selectionResult = gameController.selectPosition(selectedItem.X, selectedItem.Y);
+        speech.speak(selectionResult, TextToSpeech.QUEUE_FLUSH, null);
     }
 }

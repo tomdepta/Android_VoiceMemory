@@ -1,7 +1,11 @@
 package com.pum.voicememory.logic;
 
+import android.content.Context;
+
 import com.pum.voicememory.constants.Coordinates;
 import com.pum.voicememory.model.Field;
+import com.pum.voicememory.model.StringRepo;
+import com.pum.voicememory.model.eFieldState;
 
 
 public class GameController {
@@ -9,15 +13,21 @@ public class GameController {
     private BoardController boardController;
     private Coordinates previouslySelected;
     private Character previousLetter;
+    private Context context;
 
-    public GameController() {
+    public GameController(Context context) {
+        this.context = context;
         this.boardController = new BoardController();
         this.previouslySelected = null;
         this.previousLetter = null;
     }
 
-    public char selectPosition(final int x, final int y) {
+    public String selectPosition(final int x, final int y) {
         Field field = boardController.getFieldAt(x, y);
+        if (field.getState().equals(eFieldState.Finalized)) {
+            StringRepo repo = new StringRepo(context);
+            return repo.getFinalizedFieldAccessedString();
+        }
         if (previouslySelected == null) {
             previouslySelected = new Coordinates() {{
                 this.X = x;
@@ -40,7 +50,7 @@ public class GameController {
             previouslySelected = null;
             previousLetter = null;
         }
-        return field.getLetter();
+        return String.valueOf(field.getLetter());
     }
 
     public Field[][] getUpdatedBoardDisplay() {

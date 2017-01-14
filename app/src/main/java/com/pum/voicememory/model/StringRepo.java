@@ -45,6 +45,11 @@ public class StringRepo {
         return getStringResource(xpathStr);
     }
 
+    public String getFinalizedFieldAccessedString() {
+        String xpathStr = "StringResources/Notifications/Notification[@name='finalized_field']/"+systemLanguage;
+        return getStringResource(xpathStr);
+    }
+
     private String getStringResource(String xpathStr) {
         try {
             XPath xPath = XPathFactory.newInstance().newXPath();
