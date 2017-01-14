@@ -32,4 +32,11 @@ public class BoardController {
         selectedField.setState(eFieldState.Pending);
         board.updateField(x, y, selectedField);
     }
+
+    public void finalizeField(int x, int y) {
+        Field[][] fields = board.getBoard();
+        Field selectedField = fields[y][x];
+        selectedField.setState(eFieldState.Finalized);
+        board.updateField(x, y, selectedField);
+    }
 }
