@@ -1,6 +1,8 @@
 package com.pum.voicememory.model;
 
 
+import com.pum.voicememory.constants.BoardSize;
+
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.LinkedList;
@@ -17,7 +19,7 @@ public class Board {
     }
 
     private Field[][] initializeBoard() {
-        Field[][] result =  new Field[4][3];
+        Field[][] result =  new Field[BoardSize.Height][BoardSize.Width];
 
         Character[] fieldValues = {'A','A','B','B','C','C','D','D','E','E','F','F'};
         List<Character> listOfFieldValues = new LinkedList<>(Arrays.asList(fieldValues));

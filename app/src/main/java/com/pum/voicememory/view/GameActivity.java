@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.pum.voicememory.R;
 import com.pum.voicememory.constants.ActivityTags;
+import com.pum.voicememory.constants.BoardSize;
 import com.pum.voicememory.constants.Coordinates;
 import com.pum.voicememory.logic.GameController;
 import com.pum.voicememory.logic.voiceparsing.SpokenWordParser;
@@ -26,7 +27,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class GameActivity extends AppCompatActivity {
-    
+
     //TODO: Refactor - extract voice listener handling to another object
 
     private Integer seconds = 0;
@@ -165,24 +166,24 @@ public class GameActivity extends AppCompatActivity {
             case MoveUp:
                 selectedItem.Y--;
                 if (selectedItem.Y < 0)
-                    selectedItem.Y = 3;
+                    selectedItem.Y = BoardSize.Height - 1;
                 updateBoardLayout(gameController.getUpdatedBoardDisplay());
                 break;
             case MoveDown:
                 selectedItem.Y++;
-                if (selectedItem.Y > 3)
+                if (selectedItem.Y > BoardSize.Height - 1)
                     selectedItem.Y = 0;
                 updateBoardLayout(gameController.getUpdatedBoardDisplay());
                 break;
             case MoveLeft:
                 selectedItem.X--;
                 if (selectedItem.X < 0)
-                    selectedItem.X = 2;
+                    selectedItem.X = BoardSize.Width - 1;
                 updateBoardLayout(gameController.getUpdatedBoardDisplay());
                 break;
             case MoveRight:
                 selectedItem.X++;
-                if (selectedItem.X > 2)
+                if (selectedItem.X > BoardSize.Width - 1)
                     selectedItem.X = 0;
                 updateBoardLayout(gameController.getUpdatedBoardDisplay());
                 break;
