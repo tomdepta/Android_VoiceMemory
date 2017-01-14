@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.speech.RecognitionListener;
 import android.speech.RecognizerIntent;
 import android.speech.SpeechRecognizer;
+import android.speech.tts.TextToSpeech;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -17,6 +18,7 @@ import com.pum.voicememory.R;
 import com.pum.voicememory.constants.ActivityTags;
 import com.pum.voicememory.constants.BoardSize;
 import com.pum.voicememory.constants.Coordinates;
+import com.pum.voicememory.constants.Localization;
 import com.pum.voicememory.logic.GameController;
 import com.pum.voicememory.logic.voiceparsing.SpokenWordParser;
 import com.pum.voicememory.logic.voiceparsing.eAction;
@@ -37,6 +39,8 @@ public class GameActivity extends AppCompatActivity {
     private static final String TAG = ActivityTags.GameActivity;
     private SpokenWordParser spokenWordParser;
 
+    private TextToSpeech speech;
+
     private GameController gameController;
 
     @Override
@@ -45,6 +49,13 @@ public class GameActivity extends AppCompatActivity {
         setContentView(R.layout.activity_game);
 
         gameController = new GameController();
+
+        speech = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
+            @Override
+            public void onInit(int status) {
+            }
+        });
+        speech.setLanguage(Localization.getLocale());
 
         resetVoiceListener();
 
@@ -191,6 +202,7 @@ public class GameActivity extends AppCompatActivity {
     }
 
     private void selectButton() {
-        gameController.selectPosition(selectedItem.X, selectedItem.Y);
+        char letter = gameController.selectPosition(selectedItem.X, selectedItem.Y);
+        speech.speak(String.valueOf(letter), TextToSpeech.QUEUE_FLUSH, null);
     }
 }

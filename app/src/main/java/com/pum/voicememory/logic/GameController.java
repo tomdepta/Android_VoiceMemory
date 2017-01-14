@@ -14,7 +14,7 @@ public class GameController {
         this.previouslySelected = null;
     }
 
-    public void selectPosition(final int x, final int y) {
+    public char selectPosition(final int x, final int y) {
         Field field = boardController.getFieldAt(x, y);
         if (previouslySelected == null) {
             previouslySelected = new Coordinates() {{
@@ -27,6 +27,7 @@ public class GameController {
                 boardController.resetField(x, y);
             }
         }
+        return field.getLetter();
     }
 
     public Field[][] getUpdatedBoardDisplay() {
