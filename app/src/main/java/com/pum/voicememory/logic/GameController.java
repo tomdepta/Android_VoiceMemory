@@ -56,5 +56,9 @@ public class GameController {
     public Field[][] getUpdatedBoardDisplay() {
         return boardController.getFieldTable();
     }
+
+    public boolean isGameFinished() {
+        return boardController.areAllFieldsFinalized();
+    }
 }
 

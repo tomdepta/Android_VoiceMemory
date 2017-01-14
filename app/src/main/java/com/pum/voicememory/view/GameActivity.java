@@ -1,6 +1,7 @@
 package com.pum.voicememory.view;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.speech.RecognitionListener;
 import android.speech.RecognizerIntent;
 import android.speech.SpeechRecognizer;
@@ -8,6 +9,7 @@ import android.speech.tts.TextToSpeech;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -204,5 +206,10 @@ public class GameActivity extends AppCompatActivity {
     private void selectButton() {
         String selectionResult = gameController.selectPosition(selectedItem.X, selectedItem.Y);
         speech.speak(selectionResult, TextToSpeech.QUEUE_FLUSH, null);
+        if (gameController.isGameFinished()) {
+            Intent intent;
+            intent = new Intent(this, GameOverActivity.class);
+            startActivity(intent);
+        }
     }
 }

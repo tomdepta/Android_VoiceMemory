@@ -41,4 +41,17 @@ public class BoardController {
         selectedField.setState(eFieldState.Finalized);
         board.updateField(x, y, selectedField);
     }
+
+    public boolean areAllFieldsFinalized() {
+        Field[][] fields = board.getBoard();
+
+        for (Field[] fieldDim : fields) {
+            for (Field field : fieldDim) {
+                if (!field.getState().equals(eFieldState.Finalized)) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
 }

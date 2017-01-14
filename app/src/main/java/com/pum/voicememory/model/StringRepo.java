@@ -50,6 +50,11 @@ public class StringRepo {
         return getStringResource(xpathStr);
     }
 
+    public String getGameOverString() {
+        String xpathStr = "StringResources/Notifications/Notification[@name='game_over']/"+systemLanguage;
+        return getStringResource(xpathStr);
+    }
+
     private String getStringResource(String xpathStr) {
         try {
             XPath xPath = XPathFactory.newInstance().newXPath();

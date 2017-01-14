@@ -48,5 +48,9 @@
             <pl>te pole już jest odkryte</pl>
             <en>this field is already discovered</en>
         </Notification>
+        <Notification name="game_over">
+            <pl>Gratulacje! Gra ukończona!</pl>
+            <en>Congratulations! Game over!</en>
+        </Notification>
     </Notifications>
 </StringResources>
