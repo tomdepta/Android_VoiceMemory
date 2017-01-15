@@ -1,5 +1,6 @@
 package com.pum.voicememory.view;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
@@ -17,5 +18,12 @@ public class GameOverActivity extends AppCompatActivity {
         StringRepo stringRepo = new StringRepo(this);
         TextView tv = (TextView) findViewById(R.id.notificationTextView);
         tv.setText(stringRepo.getGameOverString());
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent;
+        intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 }
