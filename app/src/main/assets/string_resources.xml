@@ -52,5 +52,15 @@
             <pl>Gratulacje! Gra ukończona!</pl>
             <en>Congratulations! Game over!</en>
         </Notification>
+        <Notification name="how_to_play">
+            <pl>Aby kontrolować grę, należy dotknąć palcem ekranu i po usłyszeniu sygnału dźwiękowego podać komendę.
+            Do poruszania się po menu i na tablicy gry służą polecenia: "góra", "dół", "lewo", "prawo".
+            Wybranie opcji bądź pola z tablicy gry następuje po podaniu polecenia "wybierz".
+            Tablica gry ma wymiary trzy na cztery.</pl>
+            <en>In order to control the game, you have tap the screen and give a command after hearing a signal.
+            To move between menu options or in game following commands are used: "up", "down", "left", "right".
+            To select an options or a field from the game board you have to say "select".
+            The game board has a 3 by 4 size.</en>
+        </Notification>
     </Notifications>
 </StringResources>

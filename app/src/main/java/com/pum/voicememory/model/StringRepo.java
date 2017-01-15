@@ -55,6 +55,11 @@ public class StringRepo {
         return getStringResource(xpathStr);
     }
 
+    public String getInstructionsString() {
+        String xpathStr = "StringResources/Notifications/Notification[@name='how_to_play']/"+systemLanguage;
+        return getStringResource(xpathStr);
+    }
+
     private String getStringResource(String xpathStr) {
         try {
             XPath xPath = XPathFactory.newInstance().newXPath();
