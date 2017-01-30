@@ -16,6 +16,14 @@
             <pl>prawo</pl>
             <en>right</en>
         </Command>
+        <Command name="next">
+            <pl>dalej</pl>
+            <en>next</en>
+        </Command>
+        <Command name="back">
+            <pl>wstecz</pl>
+            <en>back</en>
+        </Command>
         <Command name="select">
             <pl>wybierz</pl>
             <en>select</en>

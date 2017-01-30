@@ -43,10 +43,10 @@ public class SpokenWordParser {
 
     private eAction parseMainActivityAction(String textToParse) {
 
-        if (textToParse.toLowerCase().equals(stringRepo.getCommand("move_up"))) {
+        if (textToParse.toLowerCase().equals(stringRepo.getCommand("back"))) {
             return eAction.MoveUp;
         }
-        if (textToParse.toLowerCase().equals(stringRepo.getCommand("move_down"))) {
+        if (textToParse.toLowerCase().equals(stringRepo.getCommand("next"))) {
             return eAction.MoveDown;
         }
         if (textToParse.toLowerCase().equals(stringRepo.getCommand("select"))) {
