@@ -12,6 +12,7 @@ package com.pum.voicememory.view;
     import android.view.View;
     import android.widget.Button;
     import android.widget.RelativeLayout;
+    import android.widget.TextView;
     import android.widget.Toast;
 
     import com.pum.voicememory.R;
@@ -32,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
     //TODO: Refactor - extract voice listener handling to another object
 
     private Integer selectedOptionIndex = 0;
-    private SparseArray<Button> menuButtons = new SparseArray<>();
+    private SparseArray<TextView> menuButtons = new SparseArray<>();
 
     private SpeechRecognizer recognizer;
     private static final String TAG = ActivityTags.MainActivityTag;
@@ -62,39 +63,39 @@ public class MainActivity extends AppCompatActivity {
     private void initializeDisplayedText() {
         StringRepo stringRepo = new StringRepo(getBaseContext());
 
-        Button button = (Button) findViewById(R.id.button_startGame);
-        button.setText(stringRepo.getButtonText("start_game"));
+        TextView tvButton = (TextView) findViewById(R.id.button_startGame);
+        tvButton.setText(stringRepo.getButtonText("start_game"));
 
-        button = (Button) findViewById(R.id.button_highScores);
-        button.setText(stringRepo.getButtonText("high_scores"));
+        tvButton = (TextView) findViewById(R.id.button_highScores);
+        tvButton.setText(stringRepo.getButtonText("high_scores"));
 
-        button = (Button) findViewById(R.id.button_howToPlay);
-        button.setText(stringRepo.getButtonText("how_to_play"));
+        tvButton = (TextView) findViewById(R.id.button_howToPlay);
+        tvButton.setText(stringRepo.getButtonText("how_to_play"));
 
-        button = (Button) findViewById(R.id.button_about);
-        button.setText(stringRepo.getButtonText("about"));
+        tvButton = (TextView) findViewById(R.id.button_about);
+        tvButton.setText(stringRepo.getButtonText("about"));
 
-        button = (Button) findViewById(R.id.button_quit);
-        button.setText(stringRepo.getButtonText("quit"));
+        tvButton = (TextView) findViewById(R.id.button_quit);
+        tvButton.setText(stringRepo.getButtonText("quit"));
     }
 
     private void initializeMenuItemsMap() {
-        menuButtons.put(0, (Button) findViewById(R.id.button_startGame));
-        menuButtons.put(1, (Button) findViewById(R.id.button_highScores));
-        menuButtons.put(2, (Button) findViewById(R.id.button_howToPlay));
-        menuButtons.put(3, (Button) findViewById(R.id.button_about));
-        menuButtons.put(4, (Button) findViewById(R.id.button_quit));
+        menuButtons.put(0, (TextView) findViewById(R.id.button_startGame));
+        menuButtons.put(1, (TextView) findViewById(R.id.button_highScores));
+        menuButtons.put(2, (TextView) findViewById(R.id.button_howToPlay));
+        menuButtons.put(3, (TextView) findViewById(R.id.button_about));
+        menuButtons.put(4, (TextView) findViewById(R.id.button_quit));
     }
 
     private void updateButtonView() {
         for(int i = 0; i < menuButtons.size(); i++) {
             int key = menuButtons.keyAt(i);
-            Button button = menuButtons.get(key);
+            TextView tvButton = menuButtons.get(key);
             if (i == selectedOptionIndex) {
-                button.setBackgroundColor(MAGENTA);
+                tvButton.setBackgroundColor(MAGENTA);
             }
             else {
-                button.setBackgroundColor(LTGRAY);
+                tvButton.setBackgroundColor(LTGRAY);
             }
         }
         speech.speak(String.valueOf(menuButtons.get(selectedOptionIndex).getText()), TextToSpeech.QUEUE_FLUSH, null);
