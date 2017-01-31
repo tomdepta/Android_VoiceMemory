@@ -70,6 +70,10 @@ public class GameActivity extends AppCompatActivity {
         LinearLayout layout = (LinearLayout)findViewById(R.id.board_placeholder);
         layout.removeAllViews();
         BoardLayoutCreator.addRowsToLayout(getBaseContext(), layout, selectedItem, updatedBoardDisplay);
+        String selectedUncoveredLetter = gameController.getLetterIfUncovered(selectedItem);
+        if (selectedUncoveredLetter != null) {
+            speech.speak(selectedUncoveredLetter, TextToSpeech.QUEUE_FLUSH, null);
+        }
     }
 
     private void initializeStopwatch() {

@@ -60,5 +60,13 @@ public class GameController {
     public boolean isGameFinished() {
         return boardController.areAllFieldsFinalized();
     }
+
+    public String getLetterIfUncovered(Coordinates selectedItem) {
+        Field field = boardController.getFieldAt(selectedItem.X, selectedItem.Y);
+        if (field.getState().equals(eFieldState.Finalized)) {
+            return String.valueOf(field.getLetter());
+        }
+        return null;
+    }
 }
 
