@@ -23,7 +23,7 @@ public class GameController {
     }
 
     public String selectPosition(final int x, final int y) {
-        Field field = boardController.getFieldAt(x, y);
+        Field field = boardController.selectFieldAt(x, y);
         if (field.getState().equals(eFieldState.Finalized)) {
             StringRepo repo = new StringRepo(context);
             return repo.getFinalizedFieldAccessedString();

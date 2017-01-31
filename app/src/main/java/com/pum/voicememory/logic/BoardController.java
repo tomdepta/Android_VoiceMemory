@@ -13,7 +13,7 @@ public class BoardController {
         this.board = new Board();
     }
 
-    public Field getFieldAt(int x, int y) {
+    public Field selectFieldAt(int x, int y) {
         Field[][] fields = board.getBoard();
         Field selectedField = fields[y][x];
         if (!selectedField.getState().equals(eFieldState.Finalized)) {
@@ -53,5 +53,10 @@ public class BoardController {
             }
         }
         return true;
+    }
+
+    public Field getFieldAt(int x, int y) {
+        Field[][] fields = board.getBoard();
+        return fields[y][x];
     }
 }
