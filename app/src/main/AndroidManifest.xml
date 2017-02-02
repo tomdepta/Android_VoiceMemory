@@ -25,10 +25,6 @@
         <activity
             android:name=".view.GameOverActivity"
             android:screenOrientation="portrait" />
-        <activity
-            android:name=".view.HowToPlayActivity"
-            android:screenOrientation="portrait" />
-        <activity android:name=".view.AboutActivity"></activity>
     </application>
 
 </manifest>

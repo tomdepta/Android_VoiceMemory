@@ -202,12 +202,21 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         }
         else if (selectedOptionIndex == 1) {
-            intent = new Intent(this, HowToPlayActivity.class);
-            startActivity(intent);
+            StringRepo repo = new StringRepo(this);
+            String instructions = repo.getInstructionsString();
+            readLines(instructions);
         }
         else if (selectedOptionIndex == 2) {
-            intent = new Intent(this, AboutActivity.class);
-            startActivity(intent);
+            StringRepo repo = new StringRepo(this);
+            String instructions = repo.getAboutString();
+            readLines(instructions);
+        }
+    }
+
+    private void readLines(String linesToSplit) {
+        String[] lines = linesToSplit.split("\\r\\n|\\n|\\r");
+        for (String line : lines) {
+            speech.speak(line.trim(), TextToSpeech.QUEUE_ADD, null);
         }
     }
 
