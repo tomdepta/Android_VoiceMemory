@@ -66,9 +66,6 @@ public class MainActivity extends AppCompatActivity {
         TextView tvButton = (TextView) findViewById(R.id.button_startGame);
         tvButton.setText(stringRepo.getButtonText("start_game"));
 
-        tvButton = (TextView) findViewById(R.id.button_highScores);
-        tvButton.setText(stringRepo.getButtonText("high_scores"));
-
         tvButton = (TextView) findViewById(R.id.button_howToPlay);
         tvButton.setText(stringRepo.getButtonText("how_to_play"));
 
@@ -81,10 +78,9 @@ public class MainActivity extends AppCompatActivity {
 
     private void initializeMenuItemsMap() {
         menuButtons.put(0, (TextView) findViewById(R.id.button_startGame));
-        menuButtons.put(1, (TextView) findViewById(R.id.button_highScores));
-        menuButtons.put(2, (TextView) findViewById(R.id.button_howToPlay));
-        menuButtons.put(3, (TextView) findViewById(R.id.button_about));
-        menuButtons.put(4, (TextView) findViewById(R.id.button_quit));
+        menuButtons.put(1, (TextView) findViewById(R.id.button_howToPlay));
+        menuButtons.put(2, (TextView) findViewById(R.id.button_about));
+        menuButtons.put(3, (TextView) findViewById(R.id.button_quit));
     }
 
     private void updateButtonView() {
@@ -205,7 +201,7 @@ public class MainActivity extends AppCompatActivity {
             intent = new Intent(this, GameActivity.class);
             startActivity(intent);
         }
-        else if (selectedOptionIndex == 2) {
+        else if (selectedOptionIndex == 1) {
             intent = new Intent(this, HowToPlayActivity.class);
             startActivity(intent);
         }
