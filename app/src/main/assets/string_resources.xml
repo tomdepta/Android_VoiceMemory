@@ -70,5 +70,15 @@
             To select an options or a field from the game board you have to say "select".
             The game board has a 3 by 4 size.</en>
         </Notification>
+        <Notification name="about">
+            <pl>Aplikacja została wykonana na Programowanie Urządzeń Mobilnych.
+            Autorzy:
+            Agata Hilaszek
+            Tomasz Depta</pl>
+            <en>The application has been made for Programming Mobile Devices.
+            Authors:
+            Agata Hilaszek
+            Tomasz Depta</en>
+        </Notification>
     </Notifications>
 </StringResources>

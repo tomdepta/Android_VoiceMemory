@@ -205,6 +205,10 @@ public class MainActivity extends AppCompatActivity {
             intent = new Intent(this, HowToPlayActivity.class);
             startActivity(intent);
         }
+        else if (selectedOptionIndex == 2) {
+            intent = new Intent(this, AboutActivity.class);
+            startActivity(intent);
+        }
     }
 
 }

@@ -60,6 +60,11 @@ public class StringRepo {
         return getStringResource(xpathStr);
     }
 
+    public String getAboutString() {
+        String xpathStr = "StringResources/Notifications/Notification[@name='about']/"+systemLanguage;
+        return getStringResource(xpathStr);
+    }
+
     private String getStringResource(String xpathStr) {
         try {
             XPath xPath = XPathFactory.newInstance().newXPath();
