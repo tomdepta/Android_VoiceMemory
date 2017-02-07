@@ -43,6 +43,10 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Intent checkIntent = new Intent();
+        checkIntent.setAction(TextToSpeech.Engine.ACTION_CHECK_TTS_DATA);
+        startActivityForResult(checkIntent, RESULT_OK);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -54,6 +58,9 @@ public class MainActivity extends AppCompatActivity {
         speech = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
             @Override
             public void onInit(int status) {
+                StringRepo repo = new StringRepo(getBaseContext());
+                String instructions = repo.getInstructionsString();
+                readLines(instructions);
             }
         });
         speech.setLanguage(Localization.getLocale());
