@@ -180,12 +180,12 @@ public class MainActivity extends AppCompatActivity {
             case MoveUp:
                 selectedOptionIndex--;
                 if (selectedOptionIndex < 0)
-                    selectedOptionIndex = 4;
+                    selectedOptionIndex = 3;
                     updateButtonView();
                 break;
             case MoveDown:
                 selectedOptionIndex++;
-                if (selectedOptionIndex > 4)
+                if (selectedOptionIndex > 3)
                     selectedOptionIndex = 0;
                     updateButtonView();
                 break;
@@ -210,6 +210,9 @@ public class MainActivity extends AppCompatActivity {
             StringRepo repo = new StringRepo(this);
             String instructions = repo.getAboutString();
             readLines(instructions);
+        }
+        else if (selectedOptionIndex == 3) {
+            finish();
         }
     }
 
