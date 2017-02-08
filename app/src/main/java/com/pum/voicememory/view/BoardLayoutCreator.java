@@ -14,6 +14,9 @@ import com.pum.voicememory.model.Field;
 import com.pum.voicememory.model.eFieldState;
 
 public class BoardLayoutCreator {
+
+    private static final String EMPTY_STRING = "";
+
     public static void addRowsToLayout(Context context, LinearLayout layout, Coordinates highlightedCoords, Field[][] boardContent) {
         for (int i = 0; i < BoardSize.Height; i++) {
             LinearLayout row = new LinearLayout(context);
@@ -26,7 +29,7 @@ public class BoardLayoutCreator {
                 tv.setTextSize(40);
                 tv.setGravity(Gravity.CENTER);
                 tv.setBackgroundColor(getColorFor(boardContent[i][j].getState()));
-                tv.setText(String.valueOf(boardContent[i][j].getLetter()));
+                tv.setText(getTextFor(boardContent[i][j]));
 
                 if (shouldFieldBeHighlighted(i, j, highlightedCoords)) {
                    tv.setBackgroundColor(Color.CYAN);
@@ -41,6 +44,19 @@ public class BoardLayoutCreator {
             LinearLayout.LayoutParams llp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
             llp.setMargins(0, 0, 0, 10); // (left, top, right, bottom)
             layout.addView(row, llp);
+        }
+    }
+
+    private static String getTextFor(Field field) {
+        switch (field.getState()) {
+            case Pending:
+                return EMPTY_STRING;
+            case Selected:
+                return String.valueOf(field.getLetter());
+            case Finalized:
+                return String.valueOf(field.getLetter());
+            default:
+                return EMPTY_STRING;
         }
     }
 
