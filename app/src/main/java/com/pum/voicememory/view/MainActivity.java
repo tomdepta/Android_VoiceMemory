@@ -81,6 +81,9 @@ public class MainActivity extends AppCompatActivity {
 
         tvButton = (TextView) findViewById(R.id.button_quit);
         tvButton.setText(stringRepo.getButtonText("quit"));
+
+        TextView instructionTextView = (TextView) findViewById(R.id.textview_instruction);
+        instructionTextView.setText(stringRepo.getCommand("main_instruction"));
     }
 
     private void initializeMenuItemsMap() {

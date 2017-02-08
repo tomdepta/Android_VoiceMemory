@@ -12,6 +12,7 @@
     tools:context="com.pum.voicememory.view.MainActivity">
 
     <TextView
+        android:id="@+id/textview_instruction"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/tap_anywhere_and_give_command"

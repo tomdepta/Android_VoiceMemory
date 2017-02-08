@@ -28,6 +28,10 @@
             <pl>wybierz</pl>
             <en>select</en>
         </Command>
+        <Command name="main_instruction">
+            <pl>Dotknij gdziekolwiek i podaj polecenie!</pl>
+            <en>Tap anywhere and give command!</en>
+        </Command>
     </Commands>
     <Buttons>
         <Button name="start_game">
