@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onInit(int status) {
                 StringRepo repo = new StringRepo(getBaseContext());
-                String instructions = repo.getInstructionsString();
+                String instructions = repo.getMenuWelcomeString();
                 readLines(instructions);
             }
         });

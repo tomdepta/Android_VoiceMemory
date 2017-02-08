@@ -65,6 +65,16 @@ public class StringRepo {
         return getStringResource(xpathStr);
     }
 
+    public String getMenuWelcomeString() {
+        String xpathStr = "StringResources/Notifications/Notification[@name='main_screen_welcome']/"+systemLanguage;
+        return getStringResource(xpathStr);
+    }
+
+    public String getGameWelcomeString() {
+        String xpathStr = "StringResources/Notifications/Notification[@name='game_screen_welcome']/"+systemLanguage;
+        return getStringResource(xpathStr);
+    }
+
     private String getStringResource(String xpathStr) {
         try {
             XPath xPath = XPathFactory.newInstance().newXPath();

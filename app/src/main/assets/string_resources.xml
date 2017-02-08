@@ -72,6 +72,20 @@
             To navigate on the game board following commands are used: "up", "down", "left", "right". To select a field you have to say "select".
             The game board has a 3 by 4 size.</en>
         </Notification>
+        <Notification name="main_screen_welcome">
+            <pl>Aby kontrolować grę, należy dotknąć palcem ekranu i po usłyszeniu sygnału dźwiękowego podać komendę.
+            Do poruszania się po menu służą polecenia: "dalej", "wstecz". Wybranie opcji następuje po podaniu polecenia "wybierz".
+            Aktualnie wybrana opcja to: Zacznij grę.</pl>
+            <en>In order to control the game, you have tap the screen and give a command after hearing a signal.
+            To move between menu options following commands are used: "next", "back". To select an option you have to say "select".
+            Currently selected option is: Start Game.</en>
+        </Notification>
+        <Notification name="game_screen_welcome">
+            <pl>Tablica gry ma wymiary trzy na cztery.
+            Do nawigacji na tablicy gry służą polecenia: "góra", "dół", "lewo", "prawo". Wybranie pola następuje po podaniu polecenia "wybierz".</pl>
+            <en>The game board has a 3 by 4 size.
+            To navigate on the game board following commands are used: "up", "down", "left", "right". To select a field you have to say "select".</en>
+        </Notification>
         <Notification name="about">
             <pl>Aplikacja została wykonana na Programowanie Urządzeń Mobilnych.
             Autorzy:

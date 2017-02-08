@@ -25,6 +25,7 @@ import com.pum.voicememory.logic.GameController;
 import com.pum.voicememory.logic.voiceparsing.SpokenWordParser;
 import com.pum.voicememory.logic.voiceparsing.eAction;
 import com.pum.voicememory.model.Field;
+import com.pum.voicememory.model.StringRepo;
 
 import java.util.ArrayList;
 import java.util.Timer;
@@ -47,6 +48,10 @@ public class GameActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Intent checkIntent = new Intent();
+        checkIntent.setAction(TextToSpeech.Engine.ACTION_CHECK_TTS_DATA);
+        startActivityForResult(checkIntent, RESULT_OK);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 
@@ -55,6 +60,11 @@ public class GameActivity extends AppCompatActivity {
         speech = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
             @Override
             public void onInit(int status) {
+                StringRepo repo = new StringRepo(getBaseContext());
+                String[] instructions = repo.getGameWelcomeString().split("\\r\\n|\\n|\\r");
+                for (String line : instructions) {
+                    speech.speak(line.trim(), TextToSpeech.QUEUE_ADD, null);
+                }
             }
         });
         speech.setLanguage(Localization.getLocale());
