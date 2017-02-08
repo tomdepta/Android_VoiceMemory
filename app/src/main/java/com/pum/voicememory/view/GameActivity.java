@@ -211,8 +211,8 @@ public class GameActivity extends AppCompatActivity {
         String selectionResult = gameController.selectPosition(selectedItem.X, selectedItem.Y);
         speech.speak(selectionResult, TextToSpeech.QUEUE_FLUSH, null);
         if (gameController.isGameFinished()) {
-            Intent intent;
-            intent = new Intent(this, GameOverActivity.class);
+            Intent intent = new Intent(this, GameOverActivity.class);
+            intent.putExtra("result", seconds);
             startActivity(intent);
         }
     }

@@ -57,8 +57,10 @@
             <en>this field is already discovered</en>
         </Notification>
         <Notification name="game_over">
-            <pl>Gratulacje! Gra ukończona!</pl>
-            <en>Congratulations! Game over!</en>
+            <pl>Gratulacje! Gra ukończona! Twój czas to {RESULT}.
+            Stuknij w ekran by wrócić do menu głównego.</pl>
+            <en>Congratulations! Game over! Your time is {RESULT}.
+            Tap the screen to go back to main menu.</en>
         </Notification>
         <Notification name="how_to_play">
             <pl>Aby kontrolować grę, należy dotknąć palcem ekranu i po usłyszeniu sygnału dźwiękowego podać komendę.
