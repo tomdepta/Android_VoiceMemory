@@ -24,33 +24,38 @@ public class GameController {
 
     public String selectPosition(final int x, final int y) {
         Field field = boardController.selectFieldAt(x, y);
+        StringRepo repo = new StringRepo(context);
         if (field.getState().equals(eFieldState.Finalized)) {
-            StringRepo repo = new StringRepo(context);
             return repo.getFinalizedFieldAccessedString();
         }
+        String result;
         if (previouslySelected == null) {
             previouslySelected = new Coordinates() {{
                 this.X = x;
                 this.Y = y;
             }};
             previousLetter = field.getLetter();
+            result = String.valueOf(previousLetter);
         }
         else {
             if(x == previouslySelected.X && y == previouslySelected.Y) {
                 boardController.resetField(x, y);
+                result = String.valueOf(field.getLetter());
             }
             else if (previousLetter.equals(field.getLetter())) {
                 boardController.finalizeField(x, y);
                 boardController.finalizeField(previouslySelected.X, previouslySelected.Y);
+                result = String.valueOf(field.getLetter()) + ". " + repo.getIsMatchString();
             }
             else {
                 boardController.resetField(x, y);
                 boardController.resetField(previouslySelected.X, previouslySelected.Y);
+                result = String.valueOf(field.getLetter()) + ". " + repo.getNoMatchString();
             }
             previouslySelected = null;
             previousLetter = null;
         }
-        return String.valueOf(field.getLetter());
+        return result;
     }
 
     public Field[][] getUpdatedBoardDisplay() {

@@ -57,8 +57,16 @@
     </Buttons>
     <Notifications>
         <Notification name="finalized_field">
-            <pl>te pole już jest odkryte</pl>
-            <en>this field is already discovered</en>
+            <pl>te pole już jest odkryte.</pl>
+            <en>this field is already discovered.</en>
+        </Notification>
+        <Notification name="match_found">
+            <pl>znaleziono parę.</pl>
+            <en>match found.</en>
+        </Notification>
+        <Notification name="match_not_found">
+            <pl>para niezgodna.</pl>
+            <en>no match.</en>
         </Notification>
         <Notification name="game_over">
             <pl>Gratulacje! Gra ukończona! Twój czas to {RESULT}.

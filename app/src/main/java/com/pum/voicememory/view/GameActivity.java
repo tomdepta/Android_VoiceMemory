@@ -82,7 +82,7 @@ public class GameActivity extends AppCompatActivity {
         BoardLayoutCreator.addRowsToLayout(getBaseContext(), layout, selectedItem, updatedBoardDisplay);
         String selectedUncoveredLetter = gameController.getLetterIfUncovered(selectedItem);
         if (selectedUncoveredLetter != null) {
-            speech.speak(selectedUncoveredLetter, TextToSpeech.QUEUE_FLUSH, null);
+            speech.speak(selectedUncoveredLetter, TextToSpeech.QUEUE_ADD, null);
         }
     }
 

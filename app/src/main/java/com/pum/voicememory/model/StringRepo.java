@@ -75,6 +75,16 @@ public class StringRepo {
         return getStringResource(xpathStr);
     }
 
+    public String getIsMatchString() {
+        String xpathStr = "StringResources/Notifications/Notification[@name='match_found']/"+systemLanguage;
+        return getStringResource(xpathStr);
+    }
+
+    public String getNoMatchString() {
+        String xpathStr = "StringResources/Notifications/Notification[@name='match_not_found']/"+systemLanguage;
+        return getStringResource(xpathStr);
+    }
+
     private String getStringResource(String xpathStr) {
         try {
             XPath xPath = XPathFactory.newInstance().newXPath();
