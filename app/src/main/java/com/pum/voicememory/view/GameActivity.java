@@ -1,7 +1,6 @@
 package com.pum.voicememory.view;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.speech.RecognitionListener;
 import android.speech.RecognizerIntent;
 import android.speech.SpeechRecognizer;
@@ -9,13 +8,10 @@ import android.speech.tts.TextToSpeech;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import com.pum.voicememory.R;
 import com.pum.voicememory.constants.ActivityTags;
 import com.pum.voicememory.constants.BoardSize;
@@ -120,60 +116,6 @@ public class GameActivity extends AppCompatActivity {
         Log.i("111111","11111111");
     }
 
-    class voiceListener implements RecognitionListener
-    {
-        public void onReadyForSpeech(Bundle params)
-        {
-            Log.d(TAG, "onReadyForSpeech");
-        }
-        public void onBeginningOfSpeech()
-        {
-            Log.d(TAG, "onBeginningOfSpeech");
-        }
-        public void onRmsChanged(float rmsdB)
-        {
-            Log.d(TAG, "onRmsChanged");
-        }
-        public void onBufferReceived(byte[] buffer)
-        {
-            Log.d(TAG, "onBufferReceived");
-        }
-        public void onEndOfSpeech()
-        {
-            Log.d(TAG, "onEndOfSpeech");
-        }
-        public void onError(int error)
-        {
-            Log.d(TAG,  "error " +  error);
-            Toast.makeText(getApplicationContext(), "error " + error, Toast.LENGTH_SHORT).show();
-            if (error == 8) {
-                resetVoiceListener();
-            }
-        }
-        public void onResults(Bundle results)
-        {
-            Log.d(TAG, "onResults " + results);
-            ArrayList recognizedWords = results.getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION);
-            for (Object wordObj : recognizedWords) {
-                String word = wordObj.toString();
-                eAction parsingResult = spokenWordParser.parse(word, TAG);
-                if (parsingResult != null) {
-                    Toast.makeText(getApplicationContext(), parsingResult.toString(), Toast.LENGTH_SHORT).show();
-                    performAction(parsingResult);
-                }
-            }
-            //Toast.makeText(getApplicationContext(), "results: "+String.valueOf(recognizedWords.size()), Toast.LENGTH_SHORT).show();
-        }
-        public void onPartialResults(Bundle partialResults)
-        {
-            Log.d(TAG, "onPartialResults");
-        }
-        public void onEvent(int eventType, Bundle params)
-        {
-            Log.d(TAG, "onEvent " + eventType);
-        }
-    }
-
     private void resetVoiceListener() {
         RelativeLayout rlayout =(RelativeLayout) findViewById(R.id.activity_game);
         rlayout.setOnClickListener(new View.OnClickListener() {
@@ -224,6 +166,57 @@ public class GameActivity extends AppCompatActivity {
             Intent intent = new Intent(this, GameOverActivity.class);
             intent.putExtra("result", seconds);
             startActivity(intent);
+        }
+    }
+
+    class voiceListener implements RecognitionListener
+    {
+        public void onReadyForSpeech(Bundle params)
+        {
+            Log.d(TAG, "onReadyForSpeech");
+        }
+        public void onBeginningOfSpeech()
+        {
+            Log.d(TAG, "onBeginningOfSpeech");
+        }
+        public void onRmsChanged(float rmsdB)
+        {
+            Log.d(TAG, "onRmsChanged");
+        }
+        public void onBufferReceived(byte[] buffer)
+        {
+            Log.d(TAG, "onBufferReceived");
+        }
+        public void onEndOfSpeech()
+        {
+            Log.d(TAG, "onEndOfSpeech");
+        }
+        public void onError(int error)
+        {
+            Log.d(TAG,  "error " +  error);
+            if (error == 8) {
+                resetVoiceListener();
+            }
+        }
+        public void onResults(Bundle results)
+        {
+            Log.d(TAG, "onResults " + results);
+            ArrayList recognizedWords = results.getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION);
+            for (Object wordObj : recognizedWords) {
+                String word = wordObj.toString();
+                eAction parsingResult = spokenWordParser.parse(word, TAG);
+                if (parsingResult != null) {
+                    performAction(parsingResult);
+                }
+            }
+        }
+        public void onPartialResults(Bundle partialResults)
+        {
+            Log.d(TAG, "onPartialResults");
+        }
+        public void onEvent(int eventType, Bundle params)
+        {
+            Log.d(TAG, "onEvent " + eventType);
         }
     }
 }

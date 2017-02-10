@@ -10,10 +10,8 @@ package com.pum.voicememory.view;
     import android.util.Log;
     import android.util.SparseArray;
     import android.view.View;
-    import android.widget.Button;
     import android.widget.RelativeLayout;
     import android.widget.TextView;
-    import android.widget.Toast;
 
     import com.pum.voicememory.R;
     import com.pum.voicememory.constants.ActivityTags;
@@ -23,7 +21,6 @@ package com.pum.voicememory.view;
     import com.pum.voicememory.model.StringRepo;
 
     import java.util.ArrayList;
-    import java.util.Locale;
 
     import static android.graphics.Color.LTGRAY;
     import static android.graphics.Color.MAGENTA;
@@ -142,7 +139,6 @@ public class MainActivity extends AppCompatActivity {
         public void onError(int error)
         {
             Log.d(TAG,  "error " +  error);
-            Toast.makeText(getApplicationContext(), "error " + error, Toast.LENGTH_SHORT).show();
             if (error == 8) {
                 resetVoiceListener();
             }
@@ -155,11 +151,9 @@ public class MainActivity extends AppCompatActivity {
                 String word = wordObj.toString();
                 eAction parsingResult = spokenWordParser.parse(word, TAG);
                 if (parsingResult != null) {
-                    Toast.makeText(getApplicationContext(), parsingResult.toString(), Toast.LENGTH_SHORT).show();
                     performAction(parsingResult);
                 }
             }
-            //Toast.makeText(getApplicationContext(), "results: "+String.valueOf(recognizedWords.size()), Toast.LENGTH_SHORT).show();
         }
         public void onPartialResults(Bundle partialResults)
         {
